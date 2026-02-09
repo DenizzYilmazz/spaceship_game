@@ -33,4 +33,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
             Debug.Log("Right");
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("OnColisionEnter Start.");
+    }
 }
