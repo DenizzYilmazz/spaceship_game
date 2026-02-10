@@ -18,14 +18,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
             landerRigidbody2D.AddForce(force * transform.up * Time.deltaTime);
             Debug.Log("Up");
         }
-        
+
         if (Keyboard.current.leftArrowKey.isPressed)
         {
             float turnSpeed = +100f;
             landerRigidbody2D.AddTorque(turnSpeed * Time.deltaTime);
             Debug.Log("Left");
         }
-        
+
         if (Keyboard.current.rightArrowKey.isPressed)
         {
             float turnSpeed = -100f;
@@ -34,8 +34,15 @@ public class NewMonoBehaviourScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision2D)
     {
-        Debug.Log("OnColisionEnter Start.");
+        float SoftLandingVelocityMagnitude = 4f;
+        if (collision2D.relativeVelocity.magnitude > SoftLandingVelocityMagnitude)
+        {
+            Debug.Log("Landed too hard!");
+            return;
+        }
+        Debug.Log("Successful landing");
     }
 }
+
