@@ -36,8 +36,15 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision2D)
     {
+        if (!collision2D.gameObject.TryGetComponent(out LandingPad landingPad))
+        {
+            Debug.Log("Crashed on the Terrain!");
+            return;
+        }
+
         float SoftLandingVelocityMagnitude = 4f;
-        if (collision2D.relativeVelocity.magnitude > SoftLandingVelocityMagnitude)
+        float relativeVelocityMagnitude = collision2D.relativeVelocity.magnitude;
+        if (relativeVelocityMagnitude > SoftLandingVelocityMagnitude)
         {
             Debug.Log("Landed too hard!");
             return;
@@ -52,6 +59,20 @@ public class NewMonoBehaviourScript : MonoBehaviour
             return;
         }
         Debug.Log("Successful Landing!");
+
+        float maxScoreAmountLandingAngle = 100;
+        float scoreDotVectorMultiplier = 10f;
+        float landingAngleScore = maxScoreAmountLandingAngle - Mathf.Abs(dotVector - 1) * scoreDotVectorMultiplier * maxScoreAmountLandingAngle;
+
+        float maxScoreAmountLandingSpeed = 100f;
+        float landingspeedScore = (SoftLandingVelocityMagnitude - relativeVelocityMagnitude) * maxScoreAmountLandingSpeed;
+
+        Debug.Log("landingAgnleScore: " + landingAngleScore);
+        Debug.Log("landingspeedScore: " + landingspeedScore);
+
+        int score = Mathf.RoundToInt((landingAngleScore + landingspeedScore) * landingPad.GetScoreMultiplier());
+
+        Debug.Log("score: " +  score);
     }
 }
 
