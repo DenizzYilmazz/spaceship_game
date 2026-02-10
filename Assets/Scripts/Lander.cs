@@ -4,10 +4,20 @@ using UnityEngine.InputSystem;
 
 public class Lander : MonoBehaviour
 {
+    
+    public static Lander Instance { get; private set; }
+    
     public event EventHandler OnUpForce;
     public event EventHandler OnRightForce;
     public event EventHandler OnLeftForce;
     public event EventHandler OnBefornForce;
+    public event EventHandler OnCoinPickUp;
+    public event EventHandler <OnLandedEventArgs> OnLanded;
+    public class OnLandedEventArgs: EventArgs
+    {
+        public int score;
+    }
+
 
 
     private Rigidbody2D landerRigidbody2D;
@@ -15,6 +25,8 @@ public class Lander : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+        
         landerRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
@@ -95,6 +107,10 @@ public class Lander : MonoBehaviour
         int score = Mathf.RoundToInt((landingAngleScore + landingspeedScore) * landingPad.GetScoreMultiplier());
 
         Debug.Log("score: " +  score);
+        OnLanded?.Invoke(this, new OnLandedEventArgs
+        {
+            score = score,
+        });
     }
 
     private void OnTriggerEnter2D(Collider2D collision2D)
@@ -108,6 +124,7 @@ public class Lander : MonoBehaviour
         
         if (collision2D.gameObject.TryGetComponent(out CoinPickUp coinPickUp))
         {
+            OnCoinPickUp?.Invoke(this, EventArgs.Empty);
             coinPickUp.DestroySelf();
         }
     }
