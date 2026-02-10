@@ -11,6 +11,7 @@ public class Lander : MonoBehaviour
 
 
     private Rigidbody2D landerRigidbody2D;
+    private float fuelAmount = 10f;
 
     private void Awake()
     {
@@ -21,6 +22,18 @@ public class Lander : MonoBehaviour
     {
         OnBefornForce?.Invoke(this, EventArgs.Empty);
 
+        Debug.Log(fuelAmount);
+        if(fuelAmount <= 0f)
+        {
+            return;
+        }
+        if(Keyboard.current.upArrowKey.isPressed ||
+           Keyboard.current.leftArrowKey.isPressed ||
+           Keyboard.current.rightArrowKey.isPressed)
+        {
+            ConsumeFuel();
+        }
+        
         if (Keyboard.current.upArrowKey.isPressed)
         {
             float force = 700f;
@@ -82,6 +95,21 @@ public class Lander : MonoBehaviour
         int score = Mathf.RoundToInt((landingAngleScore + landingspeedScore) * landingPad.GetScoreMultiplier());
 
         Debug.Log("score: " +  score);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision2D)
+    {
+        if (collision2D.gameObject.TryGetComponent(out FuelPickUp fuelPickUp))
+        {
+            float addFuelAmount = 10f;
+            fuelAmount += addFuelAmount;
+            fuelPickUp.DestroySelf();
+        }
+    }
+    private void ConsumeFuel()
+    {
+        float fuelConsumptionAmount = 1f;
+        fuelAmount -= fuelConsumptionAmount * Time.deltaTime;
     }
 }
 
