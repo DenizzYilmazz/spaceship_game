@@ -43,6 +43,15 @@ public class NewMonoBehaviourScript : MonoBehaviour
             return;
         }
         Debug.Log("Successful landing");
+
+        float dotVector = Vector2.Dot(Vector2.up, transform.up);
+        float minDotVector = .90f;
+        if (dotVector < minDotVector)
+        {
+            Debug.Log("Landed on a too steep angle!");
+            return;
+        }
+        Debug.Log("Successful Landing!");
     }
 }
 
