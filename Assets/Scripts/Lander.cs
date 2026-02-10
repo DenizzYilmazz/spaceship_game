@@ -105,6 +105,11 @@ public class Lander : MonoBehaviour
             fuelAmount += addFuelAmount;
             fuelPickUp.DestroySelf();
         }
+        
+        if (collision2D.gameObject.TryGetComponent(out CoinPickUp coinPickUp))
+        {
+            coinPickUp.DestroySelf();
+        }
     }
     private void ConsumeFuel()
     {
