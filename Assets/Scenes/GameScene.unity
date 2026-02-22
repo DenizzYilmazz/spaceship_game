@@ -193,7 +193,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 10
+    OrthographicSize: 25
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -783,7 +783,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1374,15 +1374,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score:
-
-    Time:
-
-    Speed X:
-
-    Speed Y:
-
-    Fuel:'
+  m_text: "Level: \nScore:\nTime:\nSpeed X:\nSpeed Y:\nFuel:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 30fd7f1dc1df39b4ba461abbf37b996a, type: 2}
   m_sharedMaterial: {fileID: -6917498455059095038, guid: 30fd7f1dc1df39b4ba461abbf37b996a, type: 2}
@@ -1838,8 +1830,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 53.184692}
-  m_SizeDelta: {x: 0, y: -106.3694}
+  m_AnchoredPosition: {x: 5.4709, y: 31.9086}
+  m_SizeDelta: {x: 10.9419, y: -63.8172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1368041120
 MonoBehaviour:
@@ -2063,7 +2055,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 155, y: -48}
+  m_AnchoredPosition: {x: 155, y: -100}
   m_SizeDelta: {x: 150.4484, y: 41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1422028446
@@ -2300,7 +2292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 155, y: -48}
+  m_AnchoredPosition: {x: 155, y: -101}
   m_SizeDelta: {x: 150.4484, y: 41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1479434921
@@ -2361,6 +2353,51 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5626142120532356289, guid: 491bc9f68306cad40a65002e796205eb, type: 3}
   m_PrefabInstance: {fileID: 577634959}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1695008700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1695008702}
+  - component: {fileID: 1695008701}
+  m_Layer: 0
+  m_Name: CinemachineZoom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1695008701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695008700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c9b44ef8ed36b43b9f93eff204173d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineCamera: {fileID: 77533149}
+--- !u!4 &1695008702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695008700}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1805626475
 GameObject:
   m_ObjectHideFlags: 0
@@ -2390,10 +2427,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82e1d704c7615f4097035633bae7c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelNumber: 1
   gameLevelList:
   - {fileID: -8502457224001347411, guid: 0a065e1937b911142b1a803d5d7bf166, type: 3}
   - {fileID: 7340585985631726299, guid: 1d3545e3c9973914db280fcce8006745, type: 3}
+  cinemachineCamera: {fileID: 77533149}
 --- !u!4 &1805626477
 Transform:
   m_ObjectHideFlags: 0
@@ -2645,6 +2682,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: '0
+
+    0
 
     1
 
@@ -3048,3 +3087,4 @@ SceneRoots:
   - {fileID: 1805626477}
   - {fileID: 509453092}
   - {fileID: 1187304435}
+  - {fileID: 1695008702}
