@@ -840,7 +840,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resumeButton: {fileID: 1055337352}
   soundVolumeButton: {fileID: 1656143881}
+  soundVolumeTextMesh: {fileID: 1731846421}
   musicVolumeButton: {fileID: 1744895076}
+  musicVolumeTextMesh: {fileID: 59605017}
 --- !u!1 &466032333
 GameObject:
   m_ObjectHideFlags: 0
