@@ -13,6 +13,7 @@ public class Lander : MonoBehaviour
     public event EventHandler OnLeftForce;
     public event EventHandler OnBefornForce;
     public event EventHandler OnCoinPickUp;
+    public event EventHandler OnFuelPickUp;
     public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
     public class OnStateChangedEventArgs : EventArgs 
     {
@@ -203,6 +204,7 @@ public class Lander : MonoBehaviour
             {
                 fuelAmount = fuelAmountMax;
             }
+            OnFuelPickUp?.Invoke(this, EventArgs.Empty);
             fuelPickUp.DestroySelf();
         }
         if (collision2D.gameObject.TryGetComponent(out CoinPickUp coinPickUp))
